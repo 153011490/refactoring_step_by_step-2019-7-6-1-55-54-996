@@ -1,27 +1,25 @@
 package com.tws.refactoring;
 
-import com.tws.refactoring.Driver;
-import com.tws.refactoring.Police;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class PoliceTest {
+public class DriverTest {
 
-    public static Police police;
+    private static Driver driver;
 
     @BeforeAll
-    public static void init_police(){
-        police=new Police();
+    public static void init(){
+        driver=new Driver();
     }
 
     @Test
     public void should_return_true_when_call_checkDriver_given_age_over_18(){
         //given
-        Driver driver=new Driver(19);
+        driver.setAge(19);
 
         //when
-        Boolean actual=police.checkDriver(driver);
+        Boolean actual=driver.isLegalDriver();
 
         //then
         Assertions.assertEquals(true,actual);
@@ -31,10 +29,10 @@ public class PoliceTest {
     @Test
     public void should_return_false_when_call_checkDriver_given_age_less_18(){
         //given
-        Driver driver=new Driver(17);
+        driver.setAge(17);
 
         //when
-        Boolean actual=police.checkDriver(driver);
+        Boolean actual=driver.isLegalDriver();
 
         //then
         Assertions.assertEquals(false,actual);
@@ -44,10 +42,10 @@ public class PoliceTest {
     @Test
     public void should_return_true_when_call_checkDriver_given_age_equal_18(){
         //given
-        Driver driver=new Driver(18);
+        driver.setAge(18);
 
         //when
-        Boolean actual=police.checkDriver(driver);
+        Boolean actual=driver.isLegalDriver();
 
         //then
         Assertions.assertEquals(true,actual);
